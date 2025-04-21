@@ -84,3 +84,49 @@ export interface DetectionResponse {
   result: TransactionResult;
   recommendations: string[];
 }
+
+// Real-time monitoring types
+export enum SuspiciousPatternType {
+  POTENTIAL_SANDWICH = 'potential_sandwich',
+  KNOWN_ATTACKER = 'known_attacker',
+  RAPID_TRADES = 'rapid_trades',
+  PRICE_MANIPULATION = 'price_manipulation',
+}
+
+export interface MempoolAlert {
+  id: string;
+  type: SuspiciousPatternType;
+  timestamp: string;
+  confidence: number;
+  transactions: string[];
+  targetTransaction?: string;
+  description: string;
+  impactedTokens?: string[];
+  estimatedImpact?: {
+    sol: number;
+    usd: number;
+  };
+}
+
+export interface MempoolStats {
+  totalAlertsToday: number;
+  activeAttackers: number;
+  mostImpactedPools: {
+    name: string;
+    alertCount: number;
+  }[];
+  recentImpactUsd: number;
+}
+
+export interface TokenMetrics {
+  symbol: string;
+  attackCount: number;
+  attackers: string[];
+  totalImpactUsd: number;
+  averageImpactPercentage: number;
+}
+
+export interface TimeSeriesDataPoint {
+  timestamp: string;
+  value: number;
+}
