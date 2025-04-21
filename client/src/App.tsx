@@ -13,6 +13,7 @@ import DocumentationPage from "@/pages/DocumentationPage";
 import ApiReferencePage from "@/pages/ApiReference";
 import TermsPage from "@/pages/TermsPage";
 import PrivacyPage from "@/pages/PrivacyPage";
+import DashboardPage from "@/pages/DashboardPage";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { WalletProvider } from "@/context/WalletContext";
 
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/api-reference" component={ApiReferencePage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/dashboard" component={DashboardPage} />
       <Route component={NotFound} />
     </Switch>
   );

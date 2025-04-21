@@ -2,7 +2,14 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { WebSocketServer } from "ws";
 import { storage } from "./storage";
-import { transactionAnalysisRequestSchema, MempoolAlert, MempoolStats, TokenMetrics, TimeSeriesDataPoint } from "@shared/schema";
+import { 
+  transactionAnalysisRequestSchema, 
+  MempoolAlert, 
+  MempoolStats, 
+  TokenMetrics, 
+  TimeSeriesDataPoint,
+  SuspiciousPatternType 
+} from "@shared/schema";
 import { mempoolMonitor } from "./mempool-monitor";
 
 // Mock data for visualization dashboard (would be replaced with real data in production)

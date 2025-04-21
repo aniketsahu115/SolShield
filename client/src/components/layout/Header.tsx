@@ -103,6 +103,21 @@ export default function Header() {
                   </a>
                 </Link>
               </li>
+              <li>
+                <Link href="/dashboard">
+                  <a 
+                    className={cn(
+                      "px-3 py-2 rounded-md text-sm font-medium transition block",
+                      isActive("/dashboard") 
+                        ? "bg-gray-700 text-white" 
+                        : "hover:bg-gray-800 text-gray-300"
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                  </a>
+                </Link>
+              </li>
             </ul>
           </nav>
           
