@@ -7,23 +7,25 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center mb-4">
-              <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center mr-2">
-                <FaShieldAlt className="text-white" />
-              </div>
-              <h3 className="text-lg font-semibold">SolShield</h3>
-            </div>
+            <Link href="/">
+              <a className="flex items-center mb-4">
+                <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center mr-2">
+                  <FaShieldAlt className="text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">SolShield</h3>
+              </a>
+            </Link>
             <p className="text-sm text-gray-400 mb-4">
               Protecting Solana users from sandwich attacks with detection tools, education, and developer resources.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FaTwitter />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FaDiscord />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FaGithub />
               </a>
             </div>
@@ -32,29 +34,57 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase text-gray-400 mb-4">Resources</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Documentation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">API Reference</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Developer Guides</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Security Blog</a></li>
+              <li>
+                <Link href="/documentation">
+                  <a className="text-gray-400 hover:text-white transition">Documentation</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/api-reference">
+                  <a className="text-gray-400 hover:text-white transition">API Reference</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/develop">
+                  <a className="text-gray-400 hover:text-white transition">Developer Guides</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources">
+                  <a className="text-gray-400 hover:text-white transition">Security Blog</a>
+                </Link>
+              </li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-semibold uppercase text-gray-400 mb-4">Community</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Discord Server</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Twitter</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">GitHub</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Support</a></li>
+              <li><a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Discord Server</a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">Twitter</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">GitHub</a></li>
+              <li><a href="mailto:support@solshield.io" className="text-gray-400 hover:text-white transition">Support</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-semibold uppercase text-gray-400 mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+              <li>
+                <Link href="/terms">
+                  <a className="text-gray-400 hover:text-white transition">Terms of Service</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy">
+                  <a className="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms#disclaimer">
+                  <a className="text-gray-400 hover:text-white transition">Disclaimer</a>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
