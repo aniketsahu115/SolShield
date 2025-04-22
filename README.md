@@ -6,7 +6,11 @@ SolShield is a comprehensive platform designed to protect Solana traders from sa
 **[Live Here](https://sol-shield-demo.vercel.app/)**
 
 
-![Homepage](attached_assets\homepage.png)
+![Homepage](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/homepage.png)
+![protect](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/protect.png)
+![learning-center](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/learning-center.png)
+![detection-tool](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/detection%20tool.png)
+
 ## Features
 
 - **Real-time Attack Detection**: Monitor and analyze transactions for potential sandwich attacks
