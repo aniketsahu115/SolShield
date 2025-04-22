@@ -83,7 +83,7 @@ export default function Footer() {
               {[
                 { icon: <FaTwitter />, url: "https://twitter.com" },
                 { icon: <FaDiscord />, url: "https://discord.com" },
-                { icon: <FaGithub />, url: "https://github.com" }
+                { icon: <FaGithub />, url: "https://github.com/aniketsahu115/SolShield" }
               ].map((social, index) => (
                 <motion.a 
                   key={index}
