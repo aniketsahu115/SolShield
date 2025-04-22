@@ -1,159 +1,119 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { useWallet } from '@/context/WalletContext';
-import { FaWallet, FaCheck, FaExternalLinkAlt, FaDownload } from 'react-icons/fa';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { truncateAddress } from '@/lib/utils';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
+import { useState } from "react";
+import { useWallet } from "@/context/WalletContext";
+import { Button } from "@/components/ui/button";
+import { truncateAddress } from "@/lib/utils";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogDescription, 
+  DialogHeader, 
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 
 export default function WalletConnect() {
   const { wallet, connecting, connectWallet, disconnectWallet, availableWallets } = useWallet();
   const [walletDialogOpen, setWalletDialogOpen] = useState(false);
-  
+
   const handleConnect = async (walletName?: string) => {
     await connectWallet(walletName);
     setWalletDialogOpen(false);
   };
 
-  const handleDisconnect = () => {
-    disconnectWallet();
-  };
-
-  // Check if any wallets are installed
-  const hasInstalledWallets = availableWallets.some(wallet => wallet.installed);
-
   return (
-    <div>
+    <>
       {wallet.connected ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="flex items-center gap-2 bg-gray-800 border-gray-700 hover:bg-gray-700">
-              <FaCheck className="text-green-400 text-xs" />
-              <span className="text-white">{truncateAddress(wallet.publicKey || '')}</span>
-              <span className="text-xs text-gray-400">({wallet.name})</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-gray-800 border-gray-700 text-white">
-            <DropdownMenuItem 
-              className="cursor-pointer hover:bg-gray-700"
-              onClick={handleDisconnect}
-            >
-              Disconnect Wallet
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center">
+          <div className="flex items-center rounded-lg bg-gray-800 p-1 pr-3">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 mr-2">
+              <span className="h-2 w-2 rounded-full bg-primary"></span>
+            </div>
+            <span className="text-sm mr-2 font-medium">
+              {truncateAddress(wallet.publicKey || "")}
+            </span>
+          </div>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={disconnectWallet}
+            className="ml-2 text-xs h-8 px-2"
+          >
+            Disconnect
+          </Button>
+        </div>
       ) : (
         <Dialog open={walletDialogOpen} onOpenChange={setWalletDialogOpen}>
           <DialogTrigger asChild>
-            <Button
+            <Button 
+              className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary hover:to-blue-500 transition-all"
               disabled={connecting}
-              className="bg-primary hover:bg-opacity-90 text-white flex items-center gap-2"
             >
-              {connecting ? (
-                'Connecting...'
-              ) : (
-                <>
-                  <FaWallet className="text-sm" />
-                  <span>Connect Wallet</span>
-                </>
-              )}
+              {connecting ? "Connecting..." : "Connect Wallet"}
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-gray-800 border-gray-700 text-white">
+          <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle className="text-xl">Connect a Wallet</DialogTitle>
-              <DialogDescription className="text-gray-400">
-                Choose a wallet to connect to SolShield
+              <DialogTitle>Connect your wallet</DialogTitle>
+              <DialogDescription>
+                Choose a wallet to connect to SolShield. If you don't have a wallet yet, you can select a provider and create one.
               </DialogDescription>
             </DialogHeader>
-            
-            <div className="py-4">
-              <div className="space-y-3">
-                {hasInstalledWallets ? (
-                  <>
-                    <h3 className="text-sm font-medium text-gray-400">INSTALLED WALLETS</h3>
-                    <div className="space-y-2">
-                      {availableWallets
-                        .filter(wallet => wallet.installed)
-                        .map(wallet => (
-                          <button
-                            key={wallet.name}
-                            onClick={() => handleConnect(wallet.name)}
-                            className="w-full flex items-center justify-between p-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition"
-                          >
-                            <div className="flex items-center">
-                              <img 
-                                src={wallet.icon} 
-                                alt={`${wallet.name} logo`} 
-                                className="h-6 w-6 mr-3"
-                                onError={(e) => {
-                                  // Use a fallback if image fails to load
-                                  (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXdhbGxldCI+PHBhdGggZD0iTTIxIDEyVjd2LS4yNEE2LjI0IDYuMjQgMCAwIDAgMTIgMyIvPjxwYXRoIGQ9Ik0xMiAzcDAgN2MwIDEuNjYgMS45OCAzIDE4IDN2LTcuMjRzLjA0LTIuNjItLjU0LTMuNjhhMy43MSAzLjcxIDAgMCAwLTEuMjctMS40NCAzLjc2IDMuNzYgMCAwIDAtMS44My0uNjRIMTZ6Ii8+PHBhdGggZD0iTTIxIDE0YzotMiA1LTMgMy01IiBzdHJva2U9Im5vbmUiLz48cGF0aCBkPSJNMyA4YTQgNCAwIDAgMSA0LTQgNCA0IDAgMCAxIDQgNCA0IDQgMCAwIDEtNCA0IDQgNCAwIDAgMS00LTQiIHN0cm9rZT0ibm9uZSIvPjxwYXRoIGQ9Ik0zIDdoMTJhMyAzIDAgMCAxIDMgM3Y3YTMgMyAwIDAgMS0zIDNIM2EzIDMgMCAwIDEtMy0zVjEwYTMgMyAwIDAgMSAzLTN6Ii8+PHBhdGggZD0iTTggMTVoMSIvPjwvc3ZnPgo=';
-                                }}
-                              />
-                              <span className="font-medium">{wallet.name}</span>
-                            </div>
-                            <span className="text-primary">Connect</span>
-                          </button>
-                        ))}
+            <div className="grid gap-4 py-4">
+              {availableWallets.map((walletOption, index) => (
+                <motion.div 
+                  key={walletOption.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, delay: index * 0.1 }}
+                >
+                  <Button
+                    variant={walletOption.installed ? "default" : "outline"}
+                    className="w-full justify-between px-4 py-6 h-auto"
+                    onClick={() => handleConnect(walletOption.name)}
+                  >
+                    <div className="flex items-center">
+                      <img 
+                        src={walletOption.icon} 
+                        alt={walletOption.name} 
+                        className="w-6 h-6 mr-3"
+                      />
+                      <div className="text-left">
+                        <p className="font-medium">{walletOption.name}</p>
+                        {!walletOption.installed && (
+                          <p className="text-xs text-muted-foreground">Not installed - will redirect</p>
+                        )}
+                      </div>
                     </div>
-                  </>
-                ) : null}
-                
-                <h3 className="text-sm font-medium text-gray-400 mt-4">GET A WALLET</h3>
-                <div className="space-y-2">
-                  {availableWallets
-                    .filter(wallet => !wallet.installed)
-                    .map(wallet => (
-                      <a
-                        key={wallet.name}
-                        href={wallet.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full flex items-center justify-between p-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition"
-                      >
-                        <div className="flex items-center">
-                          <img 
-                            src={wallet.icon} 
-                            alt={`${wallet.name} logo`} 
-                            className="h-6 w-6 mr-3" 
-                            onError={(e) => {
-                              // Use a fallback if image fails to load
-                              (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXdhbGxldCI+PHBhdGggZD0iTTIxIDEyVjd2LS4yNEE2LjI0IDYuMjQgMCAwIDAgMTIgMyIvPjxwYXRoIGQ9Ik0xMiAzcDAgN2MwIDEuNjYgMS45OCAzIDE4IDN2LTcuMjRzLjA0LTIuNjItLjU0LTMuNjhhMy43MSAzLjcxIDAgMCAwLTEuMjctMS40NCAzLjc2IDMuNzYgMCAwIDAtMS44My0uNjRIMTZ6Ii8+PHBhdGggZD0iTTIxIDE0Yzotai0yIDUtj6gDMtMCBpLTQgNCBBIDQgNCAwIDAgMS00LTQiIHN0cm9rZT0ibm9uZSIvPjxwYXRoIGQ9Ik0zIDdoMTJhMyAzIDAgMCAxIDMgM3Y3YTMgMyAwIDAgMS0zIDNIM2EzIDMgMCAwIDEtMy0zVjEwYTMgMyAwIDAgMSAzLTN6Ii8+PHBhdGggZD0iTTggMTVoMSIvPjwvc3ZnPgo=';
-                            }}
-                          />
-                          <span className="font-medium">{wallet.name}</span>
-                        </div>
-                        <div className="flex items-center text-xs text-blue-400">
-                          <FaDownload className="mr-1" />
-                          <span>Install</span>
-                          <FaExternalLinkAlt className="ml-1 text-[10px]" />
-                        </div>
-                      </a>
-                    ))}
-                </div>
-              </div>
-              
-              <div className="mt-6 text-xs text-gray-400 text-center">
-                By connecting a wallet, you agree to SolShield's Terms of Service and Privacy Policy
+                    {walletOption.installed && (
+                      <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded">
+                        Installed
+                      </span>
+                    )}
+                  </Button>
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex flex-col space-y-3 border-t border-gray-800 pt-4 text-center text-sm text-gray-400">
+              <p>New to Solana wallets?</p>
+              <div className="grid grid-cols-3 gap-2">
+                {availableWallets.map(wallet => (
+                  <a 
+                    key={wallet.name}
+                    href={wallet.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                  >
+                    <img src={wallet.icon} alt={wallet.name} className="w-8 h-8 mb-1" />
+                    <span className="text-xs">{wallet.name}</span>
+                  </a>
+                ))}
               </div>
             </div>
           </DialogContent>
         </Dialog>
       )}
-    </div>
+    </>
   );
 }

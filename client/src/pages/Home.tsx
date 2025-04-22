@@ -4,117 +4,169 @@ import Footer from "@/components/layout/Footer";
 import FooterCTA from "@/components/layout/FooterCTA";
 import Hero from "@/components/sections/Hero";
 import { Button } from "@/components/ui/button";
-import { FaShieldAlt, FaBook, FaSearch, FaCode, FaInfoCircle } from "react-icons/fa";
+import { FaShieldAlt, FaBook, FaSearch, FaCode, FaInfoCircle, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { PageTransition } from "@/components/ui/page-transition";
+
+// Feature card data
+const featureCards = [
+  {
+    icon: <FaBook className="text-blue-400 text-xl" />,
+    iconBg: "bg-blue-900",
+    title: "Learn",
+    description: "Understand how sandwich attacks work and why they're dangerous for Solana traders.",
+    buttonText: "Explore Learning Center",
+    href: "/learn",
+    delay: 0.1
+  },
+  {
+    icon: <FaSearch className="text-red-400 text-xl" />,
+    iconBg: "bg-red-900",
+    title: "Detect",
+    description: "Analyze your transactions for sandwich attacks and get protection recommendations.",
+    buttonText: "Analyze Transactions",
+    href: "/detect",
+    delay: 0.2
+  },
+  {
+    icon: <FaCode className="text-green-400 text-xl" />,
+    iconBg: "bg-green-900",
+    title: "Develop",
+    description: "Build sandwich-resistant DeFi applications with our developer tools and resources.",
+    buttonText: "Developer Resources",
+    href: "/develop",
+    delay: 0.3
+  },
+  {
+    icon: <FaInfoCircle className="text-purple-400 text-xl" />,
+    iconBg: "bg-purple-900",
+    title: "Resources",
+    description: "Explore additional tools, FAQs, and resources to protect your Solana investments.",
+    buttonText: "View Resources",
+    href: "/resources",
+    delay: 0.4
+  }
+];
+
+// Stats data
+const stats = [
+  {
+    value: "$2.8M+",
+    label: "Lost to sandwich attacks on Solana in 2024",
+    delay: 0.1
+  },
+  {
+    value: "15,000+",
+    label: "Transactions analyzed",
+    delay: 0.2
+  },
+  {
+    value: "93%",
+    label: "Detection accuracy",
+    delay: 0.3
+  },
+  {
+    value: "50+",
+    label: "Developer integrations",
+    delay: 0.4
+  }
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900">
-      <Header />
-      <main className="flex-grow">
-        <Hero />
-        
-        {/* Main Features Section */}
-        <section className="py-16 bg-gray-900">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">
-              Protect Your Solana Transactions with <span className="text-primary">SolShield</span>
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-              {/* Learn Card */}
-              <div className="bg-gray-800 rounded-xl p-6 transition transform hover:translate-y-[-5px] hover:shadow-xl flex flex-col">
-                <div className="h-12 w-12 bg-blue-900 rounded-lg flex items-center justify-center mb-5">
-                  <FaBook className="text-blue-400 text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Learn</h3>
-                <p className="text-gray-400 mb-4 flex-grow">
-                  Understand how sandwich attacks work and why they're dangerous for Solana traders.
-                </p>
-                <Link href="/learn">
-                  <Button className="w-full">
-                    Explore Learning Center
-                  </Button>
-                </Link>
-              </div>
+    <PageTransition>
+      <div className="min-h-screen flex flex-col bg-gray-900">
+        <Header />
+        <main className="flex-grow">
+          <Hero />
+          
+          {/* Main Features Section */}
+          <section className="py-16 bg-gray-900">
+            <div className="container mx-auto px-4">
+              <motion.h2 
+                className="text-3xl font-bold mb-8 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Protect Your Solana Transactions with{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">SolShield</span>
+              </motion.h2>
               
-              {/* Detect Card */}
-              <div className="bg-gray-800 rounded-xl p-6 transition transform hover:translate-y-[-5px] hover:shadow-xl flex flex-col">
-                <div className="h-12 w-12 bg-red-900 rounded-lg flex items-center justify-center mb-5">
-                  <FaSearch className="text-red-400 text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Detect</h3>
-                <p className="text-gray-400 mb-4 flex-grow">
-                  Analyze your transactions for sandwich attacks and get protection recommendations.
-                </p>
-                <Link href="/detect">
-                  <Button className="w-full">
-                    Analyze Transactions
-                  </Button>
-                </Link>
-              </div>
-              
-              {/* Develop Card */}
-              <div className="bg-gray-800 rounded-xl p-6 transition transform hover:translate-y-[-5px] hover:shadow-xl flex flex-col">
-                <div className="h-12 w-12 bg-green-900 rounded-lg flex items-center justify-center mb-5">
-                  <FaCode className="text-green-400 text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Develop</h3>
-                <p className="text-gray-400 mb-4 flex-grow">
-                  Build sandwich-resistant DeFi applications with our developer tools and resources.
-                </p>
-                <Link href="/develop">
-                  <Button className="w-full">
-                    Developer Resources
-                  </Button>
-                </Link>
-              </div>
-              
-              {/* Resources Card */}
-              <div className="bg-gray-800 rounded-xl p-6 transition transform hover:translate-y-[-5px] hover:shadow-xl flex flex-col">
-                <div className="h-12 w-12 bg-purple-900 rounded-lg flex items-center justify-center mb-5">
-                  <FaInfoCircle className="text-purple-400 text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Resources</h3>
-                <p className="text-gray-400 mb-4 flex-grow">
-                  Explore additional tools, FAQs, and resources to protect your Solana investments.
-                </p>
-                <Link href="/resources">
-                  <Button className="w-full">
-                    View Resources
-                  </Button>
-                </Link>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                {featureCards.map((card, index) => (
+                  <motion.div
+                    key={card.title}
+                    className="bg-gray-800 rounded-xl p-6 flex flex-col border border-gray-700 hover:border-primary/30"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: card.delay }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 10px 25px -5px rgba(124, 58, 237, 0.2)",
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    <motion.div 
+                      className={`h-12 w-12 ${card.iconBg} rounded-lg flex items-center justify-center mb-5`}
+                      whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {card.icon}
+                    </motion.div>
+                    <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+                    <p className="text-gray-400 mb-4 flex-grow">
+                      {card.description}
+                    </p>
+                    <Link href={card.href}>
+                      <motion.div whileTap={{ scale: 0.97 }}>
+                        <Button className="w-full group">
+                          {card.buttonText}
+                          <FaArrowRight className="ml-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" />
+                        </Button>
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
-        
-        {/* Stats Section */}
-        <section className="py-12 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">$2.8M+</p>
-                <p className="text-sm text-gray-400 mt-2">Lost to sandwich attacks on Solana in 2024</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">15,000+</p>
-                <p className="text-sm text-gray-400 mt-2">Transactions analyzed</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">93%</p>
-                <p className="text-sm text-gray-400 mt-2">Detection accuracy</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">50+</p>
-                <p className="text-sm text-gray-400 mt-2">Developer integrations</p>
+          </section>
+          
+          {/* Stats Section */}
+          <section className="py-12 bg-gradient-to-b from-gray-800 to-gray-900">
+            <div className="container mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {stats.map((stat, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: stat.delay }}
+                    viewport={{ once: true, amount: 0.6 }}
+                  >
+                    <motion.p 
+                      className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400"
+                      initial={{ scale: 0.8 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.3, delay: stat.delay + 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      {stat.value}
+                    </motion.p>
+                    <p className="text-sm text-gray-400 mt-2">{stat.label}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
-        
-        <FooterCTA />
-      </main>
-      <Footer />
-    </div>
+          </section>
+          
+          <FooterCTA />
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }
