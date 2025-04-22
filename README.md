@@ -73,8 +73,3 @@ The application will be available at `http://0.0.0.0:5000`
 2. Create a new feature branch
 3. Make your changes
 4. Submit a merge request
-
-## License
-
-MIT License - See LICENSE file for details
-
