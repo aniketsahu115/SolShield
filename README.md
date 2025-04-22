@@ -78,9 +78,3 @@ The application will be available at `http://0.0.0.0:5000`
 
 MIT License - See LICENSE file for details
 
-## Support
-
-For support or inquiries, please reach out through:
-- Discord community
-- Support contact form
-- Documentation pages
