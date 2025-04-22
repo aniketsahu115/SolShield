@@ -227,22 +227,22 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.4 }}
             >
               <Link href="/detect">
-                <motion.a 
-                  className="px-6 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-primary hover:to-blue-500 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40"
+                <motion.div 
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-blue-600 hover:from-primary hover:to-blue-500 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40 cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Try Our Detection Tool
-                </motion.a>
+                </motion.div>
               </Link>
               <Link href="/learn">
-                <motion.a 
-                  className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-500/50"
+                <motion.div 
+                  className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-500/50 cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Learn About Sandwich Attacks
-                </motion.a>
+                </motion.div>
               </Link>
             </motion.div>
           </motion.div>
