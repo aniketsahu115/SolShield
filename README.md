@@ -10,7 +10,8 @@ SolShield is a comprehensive platform designed to protect Solana traders from sa
 ![protect](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/protect.png)
 ![learning-center](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/learning-center.png)
 ![detection-tool](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/detection%20tool.png)
-![Backend Image]()
+![Backend Image](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/graphs.png)
+![Graph](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/graph.png)
 
 ## Features
 
