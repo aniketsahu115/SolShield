@@ -98,4 +98,3 @@ For support or inquiries, please reach out through:
 - Documentation pages
 =======
 4. Submit a merge request
->>>>>>> 3a7ee4bf5beb5fa39d0050c34408de76ca11eff5
