@@ -3,6 +3,17 @@
 
 SolShield is a comprehensive platform designed to protect Solana traders from sandwich attacks through detection, prevention, and educational resources.
 
+<<<<<<< HEAD
+=======
+**[Live Here](https://sol-shield-demo.vercel.app/)**
+
+
+![Homepage](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/homepage.png)
+![protect](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/protect.png)
+![learning-center](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/learning-center.png)
+![detection-tool](https://github.com/aniketsahu115/SolShield/blob/main/attached_assets/detection%20tool.png)
+
+>>>>>>> 3a7ee4bf5beb5fa39d0050c34408de76ca11eff5
 ## Features
 
 - **Real-time Attack Detection**: Monitor and analyze transactions for potential sandwich attacks
@@ -72,6 +83,7 @@ The application will be available at `http://0.0.0.0:5000`
 1. Fork the project
 2. Create a new feature branch
 3. Make your changes
+<<<<<<< HEAD
 4. Submit a merge request
 
 ## License
@@ -84,3 +96,6 @@ For support or inquiries, please reach out through:
 - Discord community
 - Support contact form
 - Documentation pages
+=======
+4. Submit a merge request
+>>>>>>> 3a7ee4bf5beb5fa39d0050c34408de76ca11eff5
