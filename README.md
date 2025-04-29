@@ -93,5 +93,4 @@ For support or inquiries, please reach out through:
 - Discord community
 - Support contact form
 - Documentation pages
-=======
 4. Submit a merge request
