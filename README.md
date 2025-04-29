@@ -3,7 +3,6 @@
 
 SolShield is a comprehensive platform designed to protect Solana traders from sandwich attacks through detection, prevention, and educational resources.
 
-=======
 **[Live Here](https://sol-shield-demo.vercel.app/)**
 
 
